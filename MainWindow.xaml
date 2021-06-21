@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scummer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
@@ -17,11 +19,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="Orange" Grid.Column="0" Grid.Row="0"/>
-        <Border Background="Blue" Grid.Column="1" Grid.Row="0"/>
+        <Border Background="Green" Grid.Column="0" Grid.Row="0"/>
+        <Border Background="#62008000" Grid.Column="0" Grid.Row="1"/>
+        <Border Background="SaddleBrown" Grid.Column="1" Grid.Row="0"/>
+        <Border Background="#7F8B4513" Grid.Column="1" Grid.Row="1"/>
 
-        <TextBlock Text="Save" Grid.Column="0" Grid.Row="0" TextAlignment="Center" FontWeight="Bold" Foreground="White" Padding="3"/>
-        <TextBlock Text="Scum" Grid.Column="1" Grid.Row="0" TextAlignment="Center" FontWeight="Bold" Foreground="White" Padding="3"/>
+
+        <TextBlock Text="Save" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Scum" Grid.Column="1" Grid.Row="0" FontWeight="Bold" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
 
         <Grid Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
