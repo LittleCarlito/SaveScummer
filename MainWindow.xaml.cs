@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
+using System;
+
 
 namespace Scummer
 {
@@ -23,6 +14,35 @@ namespace Scummer
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Beepo_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Button_Click_X(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Click__(object sender, RoutedEventArgs e)
+        {
+            this.WindowStyle = WindowStyle.SingleBorderWindow;
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Window_Activated(object sender, System.EventArgs e)
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => this.WindowStyle = WindowStyle.None));
         }
     }
 }
