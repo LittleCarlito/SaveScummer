@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Threading;
 using System;
-
+using System.Windows.Controls;
 
 namespace Scummer
 {
@@ -43,6 +43,23 @@ namespace Scummer
         private void Window_Activated(object sender, System.EventArgs e)
         {
             Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => this.WindowStyle = WindowStyle.None));
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = "";
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "C:\\";
+            }
+            tb.GotFocus -= TextBox_LostFocus;
         }
     }
 }
