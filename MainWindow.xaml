@@ -74,6 +74,7 @@
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="1">
                 <TextBox Text="No Location"
+                     Name="saveLocation"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"
@@ -101,6 +102,7 @@
             <StackPanel Orientation="Horizontal"
                         Grid.Row="1">
                 <TextBox Text="No Location"
+                     Name="targetLocation"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"
@@ -122,6 +124,7 @@
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="1">
                 <TextBox Text="No Location"
+                     Name="backupLocation"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"

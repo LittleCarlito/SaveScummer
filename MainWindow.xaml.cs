@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using System;
 using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace Scummer
 {
@@ -11,14 +12,17 @@ namespace Scummer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Dictionary<String, String> textBoxList= new Dictionary<string, string>
+        {
+            {"saveLocation", "" },
+            {"targetLocation", "" },
+            {"backupLocation", "" }
+
+        };
+
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Beepo_IsMouseDirectlyOverChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -58,6 +62,10 @@ namespace Scummer
             if (tb.Text == "")
             {
                 tb.Text = "C:\\";
+            }
+            if (textBoxList.ContainsKey(tb.Name))
+            {
+                textBoxList[tb.Name] = tb.Text;
             }
             tb.GotFocus -= TextBox_LostFocus;
         }
