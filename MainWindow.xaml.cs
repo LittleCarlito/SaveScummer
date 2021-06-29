@@ -53,7 +53,6 @@ namespace Scummer
         {
             TextBox tb = (TextBox)sender;
             tb.Text = "";
-            tb.GotFocus -= TextBox_GotFocus;
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -61,13 +60,12 @@ namespace Scummer
             TextBox tb = (TextBox)sender;
             if (tb.Text == "")
             {
-                tb.Text = "C:\\";
+                tb.Text = "No Location";
             }
-            if (textBoxList.ContainsKey(tb.Name))
+           else if (textBoxList.ContainsKey(tb.Name))
             {
                 textBoxList[tb.Name] = tb.Text;
             }
-            tb.GotFocus -= TextBox_LostFocus;
         }
     }
 }
