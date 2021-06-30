@@ -2,8 +2,10 @@
 using System.Windows.Input;
 using System.Windows.Threading;
 using System;
-using System.Windows.Controls;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using Button = System.Windows.Controls.Button;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace Scummer
 {
@@ -19,6 +21,7 @@ namespace Scummer
             {"backupLocation", "" }
 
         };
+
 
         public MainWindow()
         {
@@ -66,6 +69,39 @@ namespace Scummer
             {
                 textBoxList[tb.Name] = tb.Text;
             }
+        }
+        private void Button_Click_BrowserSelect(object sender, RoutedEventArgs e)
+        {
+            //TODO: Make the browser select display folder location if one is set or default to C:\ if none set
+            Button button = (Button)sender;
+            String assetName = nameRipper(button.Name, "Button");
+            
+            if (true)
+            {
+                if (textBoxList.ContainsKey(assetName))
+                {
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        textBoxList[assetName] = dlg.SelectedPath;
+                        dlg.ShowNewFolderButton = true;
+                        DialogResult result = dlg.ShowDialog();
+                        if(result == System.Windows.Forms.DialogResult.OK)
+                        {
+                            textBoxList[assetName] = dlg.SelectedPath;
+                        }
+                    }
+                }
+                else
+                {
+                    throw new InvalidOperationException("Asset type not recognized");
+                }
+            }
+        }
+
+        private String nameRipper(String input, String type)
+        {
+            int trimTo = input.LastIndexOf(type.Substring(0,1));
+            return input.Substring(0, trimTo);
         }
     }
 }

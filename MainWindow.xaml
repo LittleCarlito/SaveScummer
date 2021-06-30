@@ -82,6 +82,7 @@
                      GotFocus="TextBox_GotFocus"
                      LostFocus="TextBox_LostFocus"/>
                 <Button Content="Browse"
+                        Name="saveLocationButton"
                         Width="50"
                         Margin="10, 0, 0, 0"
                         BorderThickness="2">
@@ -110,9 +111,11 @@
                      GotFocus="TextBox_GotFocus"
                      LostFocus="TextBox_LostFocus"/>
                 <Button Content="Browse"
+                        Name="targetLocationButton"
                         Width="50"
                         Margin="10, 0, 0, 0"
-                        BorderThickness="2">
+                        BorderThickness="2"
+                        Click="Button_Click_BrowserSelect">
                 </Button>
             </StackPanel>
 
@@ -134,7 +137,9 @@
                 <Button Content="Browse"
                         Width="50"
                         Margin="10, 0, 0, 0"
-                        BorderThickness="2">
+                        BorderThickness="2"
+                        Name="backupLocationButton"
+                        Click="Button_Click_BrowserSelect">
                 </Button>
             </StackPanel>
 
