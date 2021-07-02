@@ -73,19 +73,20 @@
 
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="1">
-                <TextBox Text="No Location"
-                     Name="saveLocation"
+                <!--Look into NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True-->
+                <TextBox Text="{Binding Path= savePath, Mode=TwoWay}"
+                     Name="saveTextBox"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"
                      TextAlignment="Left"
-                     GotFocus="TextBox_GotFocus"
-                     LostFocus="TextBox_LostFocus"/>
+                     GotFocus="TextBox_GotFocus"/>
                 <Button Content="Browse"
                         Name="saveLocationButton"
                         Width="50"
                         Margin="10, 0, 0, 0"
-                        BorderThickness="2">
+                        BorderThickness="2"
+                        Click="saveLocationButton_Click">
                 </Button>
             </StackPanel>
         </StackPanel>
@@ -102,14 +103,13 @@
                        Margin="0, 0, 0, 5"/>
             <StackPanel Orientation="Horizontal"
                         Grid.Row="1">
-                <TextBox Text="No Location"
+                <TextBox Text="{Binding Path= targetPath, Mode=TwoWay}"
                      Name="targetLocation"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"
                      TextAlignment="Left"
-                     GotFocus="TextBox_GotFocus"
-                     LostFocus="TextBox_LostFocus"/>
+                     GotFocus="TextBox_GotFocus"/>
                 <Button Content="Browse"
                         Name="targetLocationButton"
                         Width="50"
@@ -126,19 +126,18 @@
                        Margin="0, 50, 0, 5"/>
             <StackPanel Orientation="Horizontal" 
                         Grid.Row="1">
-                <TextBox Text="No Location"
+                <TextBox Text="{Binding Path= backupPath, Mode=TwoWay}"
                      Name="backupLocation"
                      Height="25"
                      Width="250"
                      Padding="0, 3, 0, 0"
                      TextAlignment="Left"
-                     GotFocus="TextBox_GotFocus"
-                     LostFocus="TextBox_LostFocus"/>
+                     GotFocus="TextBox_GotFocus"/>
                 <Button Content="Browse"
+                        Name="backupLocationButton"
                         Width="50"
                         Margin="10, 0, 0, 0"
                         BorderThickness="2"
-                        Name="backupLocationButton"
                         Click="Button_Click_BrowserSelect">
                 </Button>
             </StackPanel>
