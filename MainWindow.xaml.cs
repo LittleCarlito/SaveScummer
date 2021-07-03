@@ -105,14 +105,13 @@ namespace Scummer
         {
             //TODO: Make the browser select display folder location if one is set or default to C:\ if none set
             Button button = (Button)sender;
-            String assetName = nameRipper(button.Name);
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
                 dlg.ShowNewFolderButton = true;
                 DialogResult result = dlg.ShowDialog();
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (assetName == "target")
+                    if (button.Name == "targetLocationButton")
                     {
                         targetPath = dlg.SelectedPath;
                     }
@@ -127,7 +126,6 @@ namespace Scummer
         private void saveLocationButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            String assetName = nameRipper(button.Name);
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.InitialDirectory = savePath;
@@ -139,10 +137,30 @@ namespace Scummer
             }
         }
 
-        private String nameRipper(String input)
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            int trimTo = input.LastIndexOf("L");
-            return input.Substring(0, trimTo);
+            if(savePath != defaultPath || targetPath != defaultPath)
+            {
+                String fileName = Path.GetFileName(savePath);
+                File.Copy(Path.Combine(Path.GetDirectoryName(savePath), fileName), Path.Combine(targetPath, (fileName)), true);
+            }
+            else
+            {
+                Console.WriteLine("SAVE and TARGET paths not set");
+            }
+        }
+
+        private void Backup_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (targetPath != defaultPath || backupPath != defaultPath)
+            {
+                foreach (var file in Directory.GetFiles(targetPath))
+                    File.Copy(file, Path.Combine(backupPath, (Path.GetFileName(file))));
+            }
+            else
+            {
+                Console.WriteLine("TARGET and BACKUP paths not set");
+            }
         }
     }
 }
